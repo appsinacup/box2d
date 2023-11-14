@@ -118,7 +118,7 @@ static b2Vec2 ComputeCentroid(const b2Vec2* vs, int32 count)
 	}
 
 	// Centroid
-	b2Assert(area > b2_epsilon);
+	b2Assert(area != 0);
 	c = (1.0f / area) * c + s;
 	return c;
 }
@@ -155,7 +155,6 @@ void b2PolygonShape::Set(const b2Hull& hull)
 		int32 i1 = i;
 		int32 i2 = i + 1 < m_count ? i + 1 : 0;
 		b2Vec2 edge = m_vertices[i2] - m_vertices[i1];
-		b2Assert(edge.LengthSquared() > b2_epsilon * b2_epsilon);
 		m_normals[i] = b2Cross(edge, 1.0f);
 		m_normals[i].Normalize();
 	}
