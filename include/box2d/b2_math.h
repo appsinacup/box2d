@@ -102,7 +102,7 @@ struct B2_API b2Vec2
 	float Normalize()
 	{
 		float length = Length();
-		if (length < b2_epsilon)
+		if (length == 0.0)
 		{
 			return 0.0f;
 		}
