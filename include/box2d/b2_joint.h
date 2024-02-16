@@ -147,6 +147,8 @@ public:
 	/// the flag is only checked when fixture AABBs begin to overlap.
 	bool GetCollideConnected() const;
 
+	void SetCollideConnected(bool collideConnected);
+
 	/// Dump this joint to the log file.
 	virtual void Dump() { b2Dump("// Dump is not supported for this joint type.\n"); }
 
@@ -228,6 +230,11 @@ inline const b2JointUserData& b2Joint::GetUserData() const
 inline bool b2Joint::GetCollideConnected() const
 {
 	return m_collideConnected;
+}
+
+inline void b2Joint::SetCollideConnected(bool collideConnected)
+{
+	m_collideConnected = collideConnected;
 }
 
 #endif

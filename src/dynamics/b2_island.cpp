@@ -284,21 +284,6 @@ void b2Island::Solve(b2Profile* profile, const b2TimeStep& step, const b2Vec2& g
 		b2Vec2 v = m_velocities[i].v;
 		float w = m_velocities[i].w;
 
-		// Check for large velocities
-		b2Vec2 translation = h * v;
-		if (b2Dot(translation, translation) > b2_maxTranslationSquared)
-		{
-			float ratio = b2_maxTranslation / translation.Length();
-			v *= ratio;
-		}
-
-		float rotation = h * w;
-		if (rotation * rotation > b2_maxRotationSquared)
-		{
-			float ratio = b2_maxRotation / b2Abs(rotation);
-			w *= ratio;
-		}
-
 		// Integrate
 		c += h * v;
 		a += h * w;
@@ -481,21 +466,6 @@ void b2Island::SolveTOI(const b2TimeStep& subStep, int32 toiIndexA, int32 toiInd
 		float a = m_positions[i].a;
 		b2Vec2 v = m_velocities[i].v;
 		float w = m_velocities[i].w;
-
-		// Check for large velocities
-		b2Vec2 translation = h * v;
-		if (b2Dot(translation, translation) > b2_maxTranslationSquared)
-		{
-			float ratio = b2_maxTranslation / translation.Length();
-			v *= ratio;
-		}
-
-		float rotation = h * w;
-		if (rotation * rotation > b2_maxRotationSquared)
-		{
-			float ratio = b2_maxRotation / b2Abs(rotation);
-			w *= ratio;
-		}
 
 		// Integrate
 		c += h * v;
